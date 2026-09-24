@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" type="image/png" href="img/simbolo-branco.png">
+<title>Foot Planet Brandbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;800&family=Archivo:wdth,wght@125,400;125,500;125,600&family=Michroma&display=swap">
+<style>
+/* Tipografia da marca: Evogria (títulos) e Tussilago (texto).
+   Usa as fontes instaladas no computador; sem elas, cai para as alternativas web. */
+@font-face{font-family:"FP Evogria";font-style:normal;font-weight:100 900;font-display:swap;
+  src:local("Evogria"),local("Evogria Regular"),local("Evogria-Regular")}
+@font-face{font-family:"FP Evogria";font-style:italic;font-weight:100 900;font-display:swap;
+  src:local("Evogria Italic"),local("Evogria-Italic"),local("Evogria")}
+@font-face{font-family:"FP Tussilago";font-style:normal;font-weight:100 900;font-display:swap;
+  src:local("Tussilago"),local("Tussilago Regular"),local("Tussilago-Regular")}
+@font-face{font-family:"FP Tussilago";font-style:italic;font-weight:100 900;font-display:swap;
+  src:local("Tussilago Italic"),local("Tussilago-Italic"),local("Tussilago")}
+:root{
+  color-scheme: dark;
+  --ink:#000000;
+  --graphite:#141414;
+  --line:#2a2a2a;
+  --fog:#f4f4f4;
+  --paper:#ffffff;
+  --muted:#8c8c8c;
+  --display:"FP Evogria","Evogria","Saira Extra Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"FP Tussilago","Tussilago","Archivo","Helvetica Neue",Arial,sans-serif;
+  --wide:"FP Tussilago","Tussilago","Michroma","Archivo","Helvetica Neue",Arial,sans-serif;
+  --gutter:clamp(16px,4vw,56px);
+}
+*{box-sizing:border-box}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:#080808;color:var(--paper);font-family:var(--body);font-stretch:125%;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* top bar */
+.bar{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:calc(env(safe-area-inset-top,0px) + 16px) var(--gutter) 16px;
+  background:linear-gradient(rgba(8,8,8,.55),rgba(8,8,8,0));pointer-events:none}
+.bar>*{pointer-events:auto}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-style:italic;font-weight:800;font-size:22px;letter-spacing:.01em;text-transform:uppercase;color:var(--paper);text-decoration:none}
+.brand img{width:28px;height:28px}
+.count{font-family:var(--wide);font-size:11px;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+.count b{color:var(--paper);font-weight:400}
+
+/* dots nav */
+.dots{position:fixed;right:calc(var(--gutter) - 6px);top:50%;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;gap:10px}
+.dots a{display:block;width:8px;height:8px;border:1px solid var(--muted);transform:skewX(-14deg);transition:background .2s,border-color .2s,height .2s}
+.dots a.on{background:var(--paper);border-color:var(--paper);height:22px}
+.dots a:focus-visible{outline:2px solid var(--paper);outline-offset:3px}
+
+/* slides */
+.slide{min-height:100svh;scroll-snap-align:start;display:grid;align-items:center;
+  padding-inline:var(--gutter);padding-block:96px 64px;position:relative;overflow:hidden}
+/* fundo da marca: réplica da referência (preto, FP em relevo, luz no topo) */
+.slide{background:linear-gradient(rgba(8,8,8,.5),rgba(8,8,8,.5)),url(img/bg-fundo.jpg) center / cover no-repeat,#080808}
+.inner{width:100%;max-width:1280px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);align-items:center}
+.slide.flip .inner{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.slide.flip .copy{order:2}
+
+.eyebrow{font-family:var(--wide);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;gap:14px;align-items:center}
+.eyebrow::after{content:"";height:1px;width:48px;background:var(--line)}
+h2{font-family:var(--display);font-style:italic;font-weight:800;text-transform:uppercase;line-height:.88;letter-spacing:-.005em;
+  font-size:clamp(44px,5.8vw,96px);margin:18px 0 20px;text-wrap:balance;overflow-wrap:normal;hyphens:manual}
+.copy p{max-width:40ch;color:#cfcfcf;margin:0 0 14px}
+.specs{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:0;max-width:420px;border-top:1px solid var(--line)}
+.specs li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.specs li span:first-child{font-family:var(--wide);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.specs li span:last-child{text-align:right}
+
+figure{margin:0}
+.plate{position:relative;background:var(--fog);aspect-ratio:3604/3508;max-width:100%;overflow:hidden;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,0 100%)}
+.plate img{display:block;width:100%;height:100%;object-fit:cover}
+figcaption{margin-top:12px;font-family:var(--wide);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:12px}
+
+/* horizontal pair */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,24px)}
+
+.slide.wide .inner{grid-template-columns:1fr}
+.slide.wide .copy{order:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(24px,5vw,80px);align-items:end}
+.slide.wide .copy .eyebrow,.slide.wide .copy h2{grid-column:1}
+.slide.wide .copy p{grid-column:1}
+.slide.wide .copy .specs{grid-column:2;grid-row:1 / span 3;align-self:end;max-width:none;margin:0}
+.slide.wide h2{margin-bottom:12px;font-size:clamp(44px,5.6vw,92px);overflow-wrap:normal}
+.slide.wide .inner{gap:clamp(20px,3vh,40px)}
+.plate-free{aspect-ratio:auto;clip-path:none;background:none}
+.plate-free img{width:100%;height:auto;object-fit:contain}
+
+/* cover */
+.cover{}
+.cover .inner{grid-template-columns:1fr;gap:0}
+.cover .ghost{position:absolute;inset:auto -8vw -18vw auto;width:min(78vw,900px);opacity:.07;pointer-events:none}
+.cover .kicker{font-family:var(--wide);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cover h1{font-family:var(--display);font-style:italic;font-weight:800;text-transform:uppercase;line-height:.82;margin:22px 0 26px;
+  font-size:clamp(84px,17vw,260px);letter-spacing:-.01em}
+.cover h1 span{display:block}
+.cover h1 .out{color:transparent;-webkit-text-stroke:2px var(--paper)}
+.slogan{font-family:var(--wide);font-size:clamp(11px,1.35vw,17px);letter-spacing:.16em;text-transform:uppercase;margin:0;max-width:none}
+.toc{list-style:none;padding:0;margin:48px 0 0;display:flex;flex-wrap:wrap;gap:8px 28px}
+.toc a{font-family:var(--wide);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.toc a:hover,.toc a:focus-visible{color:var(--paper)}
+.toc b{color:var(--paper);font-weight:400;margin-right:6px}
+
+/* type specimens */
+.specimen{font-family:var(--display);font-style:italic;font-weight:800;font-size:clamp(34px,4vw,54px);line-height:1;text-transform:uppercase;margin:6px 0 0}
+.specimen.wide{font-family:var(--wide);font-style:normal;font-weight:400;font-size:clamp(18px,2vw,26px);letter-spacing:.02em;text-transform:none}
+.note{font-size:12px;color:var(--muted);margin-top:16px}
+
+/* closing */
+.end{color:var(--paper)}
+.end .inner{grid-template-columns:1fr;justify-items:start}
+.end h2{color:var(--paper);font-size:clamp(64px,12vw,190px)}
+
+
+.end .top{margin-top:40px;font-family:var(--wide);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);text-decoration:none;border-bottom:1px solid var(--paper);padding-bottom:4px}
+
+.hint{position:fixed;left:var(--gutter);bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:10;font-family:var(--wide);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);mix-blend-mode:difference}
+
+@media (max-width:860px){
+  html{scroll-snap-type:y proximity}
+  .inner,.slide.flip .inner{grid-template-columns:1fr}
+  .slide.flip .copy{order:0}
+  .pair{grid-template-columns:1fr}
+  .slide.wide .copy{grid-template-columns:1fr}
+  .slide.wide .copy .specs{grid-column:1;grid-row:auto;margin-top:20px}
+  .dots,.hint{display:none}
+  .slide{padding-block:88px 56px}
+  .cover h1 .out{-webkit-text-stroke:1.5px var(--paper)}
+}
+</style>
+</head>
+<body>
+
+
+<header class="bar">
+  <a class="brand" href="#capa" aria-label="Foot Planet, voltar ao início">
+    <img src="img/simbolo-branco.png" alt="" width="28" height="28">
+    Foot Planet
+  </a>
+  <div class="count" aria-live="polite"><b id="cur">01</b> / <span id="tot">10</span></div>
+</header>
+
+<nav class="dots" id="dots" aria-label="Diapositivos"></nav>
+<div class="hint">← → ou scroll para navegar</div>
+
+<main id="deck">
+
+<section class="slide cover" id="capa" data-label="Capa">
+  <div class="inner">
+    <div>
+      <div class="kicker">Manual de identidade visual · 2026</div>
+      <h1><span>Foot</span><span class="out">Planet</span></h1>
+      <p class="slogan">Connecting talent. Creating opportunities</p>
+      <ul class="toc">
+        <li><a href="#simbolo"><b>01</b>Símbolo</a></li>
+        <li><a href="#simbolo-secundario"><b>02</b>Símbolo secundário</a></li>
+        <li><a href="#logo-principal"><b>03</b>Logótipos</a></li>
+        <li><a href="#slogan"><b>04</b>Slogan</a></li>
+        <li><a href="#evogria"><b>05</b>Tipografia de títulos</a></li>
+        <li><a href="#tussilago"><b>06</b>Tipografia de texto</a></li>
+        <li><a href="#estacionario"><b>07</b>Estacionário</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide alt" id="simbolo" data-label="01 Símbolo">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">01 — Símbolo</div>
+      <h2>O escudo FP</h2>
+      <p>O monograma F e P entrelaçado dentro de um heptágono aberto. O escudo remete para o emblema de clube; a abertura no lado direito deixa o P sair da forma, como o talento que sai para o mundo.</p>
+      <p>É a assinatura mais forte da marca e funciona sozinho em avatares, favicons e equipamentos.</p>
+      <ul class="specs">
+        <li><span>Uso</span><span>Avatar, favicon, merchandising</span></li>
+        <li><span>Cores</span><span>Preto sobre claro · branco sobre escuro</span></li>
+      </ul>
+    </div>
+    <figure>
+      <div class="plate"><img src="img/01-simbolo.jpg" alt="Símbolo Foot Planet: monograma FP dentro de um heptágono"></div>
+      <figcaption><span>01 · Symbol</span><span>Versão principal</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide flip" id="simbolo-secundario" data-label="02 Símbolo secundário">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">02 — Símbolo secundário</div>
+      <h2>FP sem moldura</h2>
+      <p>O monograma isolado, sem o heptágono. Mais leve e mais legível em tamanhos pequenos ou em fundos com muita informação.</p>
+      <p>A inclinação itálica das letras mantém a sensação de velocidade e movimento do jogo.</p>
+      <ul class="specs">
+        <li><span>Uso</span><span>Padrões, marcas de água, redes sociais</span></li>
+        <li><span>Fundos</span><span>Positivo e negativo</span></li>
+      </ul>
+    </div>
+    <figure>
+      <div class="plate"><img src="img/02-simbolo-secundario.jpg" alt="Símbolo secundário: monograma FP em positivo e negativo"></div>
+      <figcaption><span>02 · Secondary symbol</span><span>Positivo / negativo</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide alt" id="logo-principal" data-label="03 Logótipo principal">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">03 — Logótipo principal</div>
+      <h2>Versão vertical</h2>
+      <p>O escudo em cima e o nome em duas linhas por baixo, FOOT sobre PLANET. É a versão mais compacta e equilibrada da marca, e a primeira escolha sempre que o espaço é quadrado ou vertical.</p>
+      <ul class="specs">
+        <li><span>Composição</span><span>Símbolo + FOOT / PLANET</span></li>
+        <li><span>Uso</span><span>Redes sociais, cartazes, equipamentos, capas</span></li>
+        <li><span>Versões</span><span>Fundo claro e fundo escuro</span></li>
+      </ul>
+    </div>
+    <figure>
+      <div class="plate"><img src="img/04-logo-vertical.jpg" alt="Logótipo vertical Foot Planet, em fundo claro e escuro"></div>
+      <figcaption><span>04 · Vertical logo</span><span>Claro / escuro</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide flip" id="logo-secundario" data-label="03 Logótipo secundário">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">03 — Logótipo secundário</div>
+      <h2>Versão horizontal</h2>
+      <p>Símbolo e nome lado a lado, separados por um filete vertical. Pensado para faixas estreitas: cabeçalhos de site, assinaturas de email, rodapés e banners.</p>
+      <p>Como opção secundária, o nome numa só linha com o slogan por baixo, para capas e apresentações com espaço em largura.</p>
+      <ul class="specs">
+        <li><span>Opção A</span><span>Símbolo | FOOT PLANET</span></li>
+        <li><span>Opção B</span><span>Símbolo + FOOT PLANET + slogan</span></li>
+        <li><span>Uso</span><span>Header web, email, banners, capas</span></li>
+      </ul>
+    </div>
+    <div class="pair">
+      <figure>
+        <div class="plate"><img src="img/03-logo-secundario.jpg" alt="Logótipo horizontal Foot Planet, em fundo claro e escuro"></div>
+        <figcaption><span>A · Horizontal</span><span>Principal</span></figcaption>
+      </figure>
+      <figure>
+        <div class="plate"><img src="img/03-logo-principal.jpg" alt="Logótipo Foot Planet com slogan, em fundo claro e escuro"></div>
+        <figcaption><span>B · Com slogan</span><span>Opção secundária</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide alt" id="slogan" data-label="04 Slogan">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">04 — Slogan</div>
+      <h2>Talento e oportunidade</h2>
+      <p class="slogan" style="margin-bottom:20px">Connecting talent. Creating opportunities</p>
+      <p>Duas frases curtas que resumem a missão: ligar jogadores a quem os procura e abrir portas no futebol.</p>
+      <p>Escreve-se sempre em maiúsculas, na fonte de texto, com espaçamento largo entre letras.</p>
+    </div>
+    <figure>
+      <div class="plate"><img src="img/04-slogan.jpg" alt="Slogan Connecting talent. Creating opportunities em fundo claro e escuro"></div>
+      <figcaption><span>04 · Slogan</span><span>Claro / escuro</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide flip" id="evogria" data-label="05 Evogria">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">05 — Tipografia de títulos</div>
+      <h2>Evogria</h2>
+      <p>Sans condensada e pesada, com versão itálica. Dá aos títulos o tom de camisola e placar de estádio.</p>
+      <p class="specimen">Next generation 2026</p>
+      <ul class="specs">
+        <li><span>Função</span><span>Títulos e números</span></li>
+        <li><span>Estilos</span><span>Regular · Itálico</span></li>
+        <li><span>Caixa</span><span>Só maiúsculas</span></li>
+      </ul>
+    </div>
+    <figure>
+      <div class="plate"><img src="img/05-evogria.jpg" alt="Especimen da fonte Evogria, maiúsculas e números em regular e itálico"></div>
+      <figcaption><span>05 · Heading font</span><span>A–Z · 0–9</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide alt" id="tussilago" data-label="06 Tussilago">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">06 — Tipografia de texto</div>
+      <h2>Tussilago</h2>
+      <p>Sans expandida e geométrica. O contraste com a Evogria condensada cria a tensão entre os dois pesos da marca.</p>
+      <p class="specimen wide">Scouting, gestão e carreira</p>
+      <ul class="specs">
+        <li><span>Função</span><span>Texto, slogan, legendas</span></li>
+        <li><span>Estilos</span><span>Regular · Itálico</span></li>
+        <li><span>Caixa</span><span>Maiúsculas e minúsculas</span></li>
+      </ul>
+    </div>
+    <figure>
+      <div class="plate"><img src="img/06-tussilago.jpg" alt="Especimen da fonte Tussilago, maiúsculas, minúsculas e números"></div>
+      <figcaption><span>06 · Text font</span><span>Aa–Zz · 0–9</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide flip wide" id="estacionario" data-label="07 Estacionário">
+  <div class="inner">
+    <div class="copy">
+      <div class="eyebrow">07 — Estacionário</div>
+      <h2>Estacionário</h2>
+      <p>A marca aplicada ao dia a dia: cartões de visita, envelope, caderno, caneta e papel timbrado. Base preta com o escudo e o logótipo a branco, e peças claras com o logótipo horizontal a preto.</p>
+      <ul class="specs">
+        <li><span>Cartões</span><span>85 × 55 mm · frente preta, verso claro</span></li>
+        <li><span>Papel timbrado</span><span>A4 · logótipo horizontal</span></li>
+        <li><span>Caderno e envelope</span><span>Preto mate · escudo a branco</span></li>
+        <li><span>Caneta</span><span>Preta · símbolo gravado</span></li>
+      </ul>
+    </div>
+    <figure>
+      <div class="plate plate-free"><img src="img/07-estacionario-hd.jpg" alt="Maquete de estacionário Foot Planet: cartões de visita, envelope, caderno, caneta e papel timbrado"></div>
+      <figcaption><span>07 · Stationery</span><span>Cartões · envelope · caderno · caneta · papel timbrado</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="slide end" id="fim" data-label="Fim">
+  <div class="inner">
+    <div class="eyebrow">Foot Planet</div>
+    <h2>Obrigado</h2>
+    <p class="slogan">Connecting talent. Creating opportunities</p>
+    <a class="top" href="#capa">Voltar ao início</a>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),cur=document.getElementById('cur');
+  document.getElementById('tot').textContent=String(slides.length).padStart(2,'0');
+  slides.forEach(function(s){
+    var a=document.createElement('a');a.href='#'+s.id;a.setAttribute('aria-label',s.dataset.label);a.title=s.dataset.label;dots.appendChild(a);
+  });
+  var links=[].slice.call(dots.children),idx=0;
+  function set(i){idx=i;cur.textContent=String(i+1).padStart(2,'0');links.forEach(function(l,j){l.classList.toggle('on',j===i)});}
+  set(0);
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)set(slides.indexOf(e.target))})},{threshold:.55});
+    slides.forEach(function(s){io.observe(s)});
+  }
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+  document.addEventListener('keydown',function(e){
+    if(e.target.closest&&e.target.closest('input,textarea'))return;
+    if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(idx+1);}
+    else if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(idx-1);}
+    else if(e.key==='Home'){e.preventDefault();go(0);}
+    else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+  });
+})();
+</script>
+
+</body>
+</html>
